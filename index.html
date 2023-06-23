@@ -1,12 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="./style.css">
+    <title>Weather Dashboard</title>
 </head>
 <body>
-  <form id="search-form">
-    <input type="text" id="city-input" placeholder="Enter city name">
-    <button type="submit">Search</button>
-  </form>
+    <header>
+        <h1>Weather Dashboard</h1>
+    </header>
+
+    <div class="biggerContainer">
+        <div class="searchCities">
+            <h3>Search for a city</h3>
+            <form id="search-form">
+                <input type="text" id="city-input" placeholder="Enter city name">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+        <div class="bigContainer">
+            <div class="currentForecast">
+                <h2 id="city-name"></h2>
+                <p id="current-date"></p>
+                <p id="current-temperature"></p>
+                <p id="current-humidity"></p>
+                <p id="current-wind-speed"></p>
+                <img id="current-icon" alt="Weather Icon">
+            </div>
+
+            <div class="fiveDayForecast">
+                <h5>5 day forecast</h5>
+                <div id="forecast-items"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./index.js"></script>
 </body>
 </html>
