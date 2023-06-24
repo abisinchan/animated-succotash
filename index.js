@@ -1,6 +1,6 @@
 // Get references to the necessary HTML elements
 const searchForm = document.getElementById('search-form');
-const cityInput = document.getElementById('city-input');
+const searchInput = document.getElementById('search-input');
 const cityNameElement = document.getElementById('city-name');
 const currentDateElement = document.getElementById('current-date');
 const currentTemperatureElement = document.getElementById('current-temperature');
@@ -14,11 +14,11 @@ const apiKey = 'ef3834312c73da95dcd5c0744aacfc9b';
 searchForm.addEventListener('submit', function (e) {
   e.preventDefault(); // Prevent form submission
 
-  const city = cityInput.value.trim();
+  const searchQuery = searchInput.value.trim();
 
   // Call the geocoding API to get latitude and longitude for the city
   fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`
+    `http://api.openweathermap.org/geo/1.0/direct?q=${searchQuery}&limit=1&appid=${apiKey}`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -32,11 +32,12 @@ searchForm.addEventListener('submit', function (e) {
           .then((response) => response.json())
           .then((data) => {
             // Update the current weather elements with the retrieved data
-            cityNameElement.textContent = city;
+            cityNameElement.textContent = data.name;
             currentDateElement.textContent = getCurrentDate();
             // Convert temperature from Kelvin to Fahrenheit
             const currentTemperatureFahrenheit = Math.round(
-                ((data.main.temp - 273.15) * 9) / 5 + 32);
+              ((data.main.temp - 273.15) * 9) / 5 + 32
+            );
             currentTemperatureElement.textContent = `${currentTemperatureFahrenheit}°F`;
             currentHumidityElement.textContent = `Humidity: ${data.main.humidity}%`;
             currentWindSpeedElement.textContent = `Wind Speed: ${data.wind.speed} m/s`;
@@ -70,10 +71,13 @@ searchForm.addEventListener('submit', function (e) {
               forecastDate.textContent = formatDate(forecast.dt);
               forecastItem.appendChild(forecastDate);
 
-            // Convert temperature from Kelvin to Fahrenheit
-            const forecastTemperatureFahrenheit = Math.round(
-                ((forecast.main.temp - 273.15) * 9) / 5 + 32);
-             forecastTemperature.textContent = `${forecastTemperatureFahrenheit}°F`;
+              // Convert temperature from Kelvin to Fahrenheit
+              const forecastTemperatureFahrenheit = Math.round(
+                ((forecast.main.temp - 273.15) * 9) / 5 + 32
+              );
+
+              const forecastTemperature = document.createElement('p');
+              forecastTemperature.textContent = `${forecastTemperatureFahrenheit}°F`;
               forecastItem.appendChild(forecastTemperature);
 
               const forecastIcon = document.createElement('img');
@@ -91,7 +95,17 @@ searchForm.addEventListener('submit', function (e) {
             console.log('Error fetching forecast:', error);
           });
       } else {
-        console.log('City not found');
+        // Clear previous weather data
+        cityNameElement.textContent = '';
+        currentDateElement.textContent = '';
+        currentTemperatureElement.textContent = '';
+        currentHumidityElement.textContent = '';
+        currentWindSpeedElement.textContent = '';
+        currentIconElement.setAttribute('src', '');
+        currentIconElement.setAttribute('alt', '');
+
+        // Display city not found message
+        cityNameElement.textContent = 'City not found';
       }
     })
     .catch((error) => {
