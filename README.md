@@ -1,51 +1,37 @@
 # animated-succotash
 Module6-Challenge6-6-13-23
-# <Your-Project-Title>
 
 ## Description
-
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
-
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
-
-## Table of Contents (Optional)
-
-If your README is long, add a table of contents to make it easy for users to find what they need.
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Credits](#credits)
-- [License](#license)
+This project challenge was to create a working weather app. In this challenge we implemented using fetch calls to gather data from a third party source . 
+I gathered inspo from the example that was given, and made it similar with different color theme. So now, anyone who may be traveling will be able to access this weather app that gives a current day forecast, and a five day forecast. The data recieved from the openweather api can help the user prepare activities for the day, and maybe even how to dress for the day. I learned to convert  temperature from Kelvin to Fahrenheit in this challenge. Also learned how to format date, and manipulate array for the saved cities in local storage. 
 
 ## Installation
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+N/a
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+Upon arrival to page , a prompt should iniate asking approval to allow sharing location. If approved current location weather would be displayed, otherwise error message would display. User can then type in name of city and press search to display current weather, and five day forecast. The app stores up to 8 cities history that was searched, and replaces the oldest search everytime user initiates another search. 
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+## Screenshot
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+![Screenshot-2023-07-02-170127](https://github.com/abisinchan/verbose-potato/assets/132783183/c9b3e80b-2df8-4fdd-8c93-7ebc33ab8ed3)
 
 ## Credits
+farenheit formula
+https://www.cuemath.com/kelvin-to-fahrenheit-formula/
 
-List your collaborators, if any, with links to their GitHub profiles.
+date format
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString
 
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
-
-If you followed tutorials, include links to those here as well.
+Api usage
+https://openweathermap.org/api
 
 ## License
-
-The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
+MIT
 
 ## Deployed
+https://abisinchan.github.io/animated-succotash/
 
 ## Repo
+https://github.com/abisinchan/animated-succotash.git
